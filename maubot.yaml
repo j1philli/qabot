@@ -3,5 +3,5 @@ id: gg.j1philli.qabot
 version: 0.0.1
 license: MIT
 modules:
-  - qabot
-main_class: qabot
+- qabot
+main_class: QaBot
