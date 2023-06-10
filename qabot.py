@@ -11,3 +11,9 @@ class QaBot(Plugin):
     elif evt.sender != self.client.mxid and 'org.matrix.msc2716.historical' not in evt.content:
       self.log.info(f"{evt.room_id} received a message I care about")
       await self.client.send_text(evt.room_id, "Received normal message")
+  
+  @event.on(EventType.REACTION)
+  async def handle_reactions(self, evt: MessageEvent) -> None:
+    if evt.sender != self.client.mxid:
+      self.log.info(f"{evt.room_id} received a reaction I care about")
+      await self.client.send_text(evt.room_id, "Received reaction")
