@@ -11,3 +11,4 @@ extra_files:
 dependencies:
 - websockets>=11.0.3
 config: true
+webapp: true
