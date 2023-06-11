@@ -1,6 +1,12 @@
 from maubot import Plugin
 from maubot.handlers import event
 from mautrix.types import EventType, MessageEvent
+from websockets.server import serve
+import asyncio
+
+async def main():
+    async with serve(echo, "localhost", 8765):
+        await asyncio.Future()  # run forever
 
 class QaBot(Plugin):
   @event.on(EventType.ROOM_MESSAGE)
