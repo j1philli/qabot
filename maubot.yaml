@@ -5,3 +5,9 @@ license: MIT
 modules:
 - qabot
 main_class: QaBot
+extra_files:
+- base-config.yaml
+dependencies:
+- websockets
+- asyncio
+config: true
