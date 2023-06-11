@@ -1,13 +1,13 @@
-maubot: 0.4.1
+maubot: 0.0.1
 id: gg.j1philli.qabot
 version: 0.0.1
-license: MIT
+license: AGPL-3.0-or-later
 modules:
+- websockets
 - qabot
-main_class: QaBot
+main_class: qabot/QaBot
 extra_files:
 - base-config.yaml
 dependencies:
-- websockets
-- asyncio
+- websockets>=11.0.3
 config: true
