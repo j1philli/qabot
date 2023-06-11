@@ -2,7 +2,6 @@ from typing import Type
 from maubot import Plugin
 from maubot.handlers import event
 from mautrix.types import EventType, MessageEvent
-import asyncio
 from mautrix.util.config import BaseProxyConfig, ConfigUpdateHelper
 
 class Config(BaseProxyConfig):

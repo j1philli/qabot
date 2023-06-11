@@ -3,12 +3,10 @@ id: gg.j1philli.qabot
 version: 0.0.1
 license: AGPL-3.0-or-later
 modules:
-- websockets
 - qabot
 main_class: qabot/QaBot
 extra_files:
 - base-config.yaml
-dependencies:
-- websockets>=11.0.3
+#dependencies:
 config: true
 webapp: true
