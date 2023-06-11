@@ -18,6 +18,8 @@ async def main(self):
 class QaBot(Plugin):
   async def start(self) -> None:
     self.config.load_and_update()
+  
+  m
 
   @event.on(EventType.ROOM_MESSAGE)
   async def handle_message(self, evt: MessageEvent) -> None:
