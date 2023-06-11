@@ -1,0 +1,3 @@
+#this is the ip that the bot is listening on
+server-host: localhost
+server-port: 8765
