@@ -8,6 +8,7 @@ modules:
 main_class: qabot/QaBot
 extra_files:
 - base-config.yaml
-#dependencies:
+dependencies:
+- websockets>=11.0.3
 config: true
 webapp: true
