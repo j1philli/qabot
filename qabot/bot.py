@@ -16,7 +16,7 @@ async def echo(websocket):
         await websocket.send(message)
 
 async def websocket():
-    async with serve(echo, "172.17.0.2", 8765):
+    async with serve(echo, config.get, 8765):
         await asyncio.Future()  # run forever
 
 class QaBot(Plugin):
@@ -25,6 +25,10 @@ class QaBot(Plugin):
     self.config.load_and_update()
     await websocket()
     self.log.debug("start def ran")
+
+  async def websocket(self):
+    async with serve(echo, self.config.get["server-host"] , self.config.get["server-ip"]):
+        await asyncio.Future()  # run forever
 
 
   @classmethod
