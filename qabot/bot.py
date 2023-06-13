@@ -15,21 +15,16 @@ async def echo(websocket):
     async for message in websocket:
         await websocket.send(message)
 
-async def websocket():
-    async with serve(echo, config.get, 8765):
-        await asyncio.Future()  # run forever
-
 class QaBot(Plugin):
   async def start(self) -> None:
     await super().start()
     self.config.load_and_update()
-    await websocket()
+    await self.websocket()
     self.log.debug("start def ran")
 
   async def websocket(self):
-    async with serve(echo, self.config.get["server-host"] , self.config.get["server-ip"]):
+    async with serve(echo, self.config["server-host"], self.config["server-ip"]):
         await asyncio.Future()  # run forever
-
 
   @classmethod
   def get_config_class(cls) -> Type[BaseProxyConfig]:
