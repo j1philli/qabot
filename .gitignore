@@ -1,2 +1,6 @@
 gg.j1philli.qabot-v0.0.1.mbp
 .DS_Store
+websockets/__pycache__
+websockets/extensions
+websockets/legacy
+websockets/sync
