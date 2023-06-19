@@ -5,15 +5,15 @@ from mautrix.types import EventType, MessageEvent
 from mautrix.util.config import BaseProxyConfig, ConfigUpdateHelper
 import asyncio
 from websockets.server import serve
+import json
 
 class Config(BaseProxyConfig):
     def do_update(self, helper: ConfigUpdateHelper) -> None:
         helper.copy("server-ip")
         helper.copy("server-port")
 
-async def echo(websocket):
-    async for message in websocket:
-        await websocket.send(message)
+expect_type = str
+expect_roomid = str
 
 class QaBot(Plugin):
   async def start(self) -> None:
@@ -23,9 +23,15 @@ class QaBot(Plugin):
     self.log.debug("start def ran")
 
   async def websocket(self):
-    async with serve(echo, self.config["server-host"], self.config["server-ip"]):
+    async with serve(self.expect, self.config["server-host"], self.config["server-ip"]):
         await asyncio.Future()  # run forever
-
+  
+  async def expect(websocket):
+    async for message in websocket:
+        payload = json.loads(message)
+        expect_type = payload["type"]
+        expect_roomid = payload["roomid"]
+        
   @classmethod
   def get_config_class(cls) -> Type[BaseProxyConfig]:
         return Config
